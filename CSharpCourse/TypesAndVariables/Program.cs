@@ -2,6 +2,7 @@
 long number2 = 9223372036854775807;// int veri tipinin iki katı değer aralığı +-, 64bit yer kaplar
 short number3 = -32768;//32767 ve -32768, 16bit
 byte number4 = 255; //0-255 arası değer alıyor, 32bit
+bool condition = true;// değer tiptedir.
 
 Console.WriteLine("Number1 is {0}", number1);
 Console.WriteLine("Number2 is {0}", number2);
