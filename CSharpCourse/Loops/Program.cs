@@ -1,7 +1,15 @@
 ﻿
 //ForLoop();
 //WhileLoop();
-DoWhileLoop();
+//DoWhileLoop();
+
+string[] students = new String[3] { "Özkan", "Özkan2", "Özkan3" };
+
+foreach (var student in students)
+{
+    Console.WriteLine(student);
+}
+Console.ReadLine();
 
 
 static void WhileLoop()
