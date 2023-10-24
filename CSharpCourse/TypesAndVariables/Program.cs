@@ -3,10 +3,12 @@ long number2 = 9223372036854775807;// int veri tipinin iki katı değer aralığ
 short number3 = -32768;//32767 ve -32768, 16bit
 byte number4 = 255; //0-255 arası değer alıyor, 32bit
 bool condition = true;// değer tiptedir.
+char character = 'A';
 
 Console.WriteLine("Number1 is {0}", number1);
 Console.WriteLine("Number2 is {0}", number2);
 Console.WriteLine("Number3 is {0}", number3);
 Console.WriteLine("Number4 is {0}", number4);
+Console.WriteLine("Character is {0}", (int)character);//int'e çevirildi ve ascii kodunu verdi.
 
 Console.ReadLine();
