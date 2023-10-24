@@ -4,3 +4,5 @@
 /CSharpCourse/.vs/CSharpCourse/v17/*.suo
 /CSharpCourse/TypesAndVariables/bin
 /CSharpCourse/TypesAndVariables/obj
+obj
+bin
