@@ -1,2 +1,6 @@
-vs
-bin
+*.vs
+*.bin
+/CSharpCourse/.vs
+/CSharpCourse/.vs/CSharpCourse/v17/*.suo
+/CSharpCourse/TypesAndVariables/bin
+/CSharpCourse/TypesAndVariables/obj
