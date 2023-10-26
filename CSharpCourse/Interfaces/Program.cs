@@ -2,11 +2,19 @@
 
 //InterfacesIntro();
 
+//Demo();
 
-CustomerManager customerManager = new CustomerManager();
-customerManager.Add(new OracleCustomerDal());
+ICustomerDal[] customerDals = new ICustomerDal[3]
+{
+    new SqlServerCustomerDal(),
+    new OracleCustomerDal(),
+    new MySqlCustomerDal(),
+};
 
-
+foreach (var customerDal in customerDals)
+{
+    customerDal.Add();
+}
 
 
 Console.ReadLine();
@@ -35,6 +43,12 @@ static void InterfacesIntro()
 
     manager.Add(customer);
     manager.Add(student);
+}
+
+static void Demo()
+{
+    CustomerManager customerManager = new CustomerManager();
+    customerManager.Add(new OracleCustomerDal());
 }
 
 interface IPerson
