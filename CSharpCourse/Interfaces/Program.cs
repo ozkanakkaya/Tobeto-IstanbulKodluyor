@@ -1,25 +1,41 @@
-﻿
+﻿using Interfaces;
 
-PersonManager manager = new PersonManager();
-Customer customer = new Customer
+//InterfacesIntro();
+
+
+CustomerManager customerManager = new CustomerManager();
+customerManager.Add(new OracleCustomerDal());
+
+
+
+
+Console.ReadLine();
+
+
+
+
+static void InterfacesIntro()
 {
-    Id = 1,
-    FirstName = "Özkan",
-    LastName = "Akkaya",
-    Address = "İstanbul"
-};
+    PersonManager manager = new PersonManager();
+    Customer customer = new Customer
+    {
+        Id = 1,
+        FirstName = "Özkan",
+        LastName = "Akkaya",
+        Address = "İstanbul"
+    };
 
-Student student = new Student
-{
-    Id = 1,
-    FirstName = "Özkan1",
-    LastName = "Akkaya1",
-    Departmant = "Software",
-};
+    Student student = new Student
+    {
+        Id = 1,
+        FirstName = "Özkan1",
+        LastName = "Akkaya1",
+        Departmant = "Software",
+    };
 
-manager.Add(customer);
-manager.Add(student);
-
+    manager.Add(customer);
+    manager.Add(student);
+}
 
 interface IPerson
 {
