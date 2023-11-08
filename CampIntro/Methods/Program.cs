@@ -29,3 +29,7 @@ foreach (var urun in urunler)
 BasketManager basketManager = new BasketManager();
 basketManager.Ekle(urun1);
 basketManager.Ekle(urun2);
+
+basketManager.Ekle2("Armut", "Yesil armut", 12, 10);
+basketManager.Ekle2("Elma", "Yesil elma", 12, 20);
+basketManager.Ekle2("Karpuz", "Diyarbakir karpuzu", 12, 30);

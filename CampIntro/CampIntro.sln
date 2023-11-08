@@ -5,6 +5,10 @@ VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Methods", "Methods\Methods.csproj", "{BBB6EBCA-5AEE-4104-993B-D87B02B7A1A3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Math", "Math\Math.csproj", "{83017FC4-67A9-4D08-9C99-B649BEB19DFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueAndReferenceTypes", "ValueAndReferenceTypes\ValueAndReferenceTypes.csproj", "{BBB23C48-F74E-4862-A3B0-5A28617EDD76}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{BBB6EBCA-5AEE-4104-993B-D87B02B7A1A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBB6EBCA-5AEE-4104-993B-D87B02B7A1A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBB6EBCA-5AEE-4104-993B-D87B02B7A1A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83017FC4-67A9-4D08-9C99-B649BEB19DFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83017FC4-67A9-4D08-9C99-B649BEB19DFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83017FC4-67A9-4D08-9C99-B649BEB19DFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83017FC4-67A9-4D08-9C99-B649BEB19DFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBB23C48-F74E-4862-A3B0-5A28617EDD76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBB23C48-F74E-4862-A3B0-5A28617EDD76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBB23C48-F74E-4862-A3B0-5A28617EDD76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBB23C48-F74E-4862-A3B0-5A28617EDD76}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
