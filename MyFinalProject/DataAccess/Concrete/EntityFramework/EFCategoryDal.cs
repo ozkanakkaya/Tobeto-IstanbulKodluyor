@@ -8,6 +8,7 @@ namespace DataAccess.Concrete.EntityFramework
     {
         public void Add(Category entity)
         {
+
             throw new NotImplementedException();
         }
 
