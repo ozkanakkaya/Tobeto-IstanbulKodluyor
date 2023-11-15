@@ -1,4 +1,6 @@
 ﻿using Business.Abstracts;
+using Business.Constants;
+using Core.Utilities.Results;
 using DataAccess.Abstracts;
 using Entities.Concretes;
 
@@ -13,31 +15,50 @@ namespace Business.Concretes
             _categoryDal = categoryDal;
         }
 
-        public void Add(Category category)
+        public IResult Add(Category category)
         {
+            if (category.Name.Length < 2)
+            {
+                //magic strings
+                return new ErrorResult(Messages.CategoryNameInvalid);
+            }
             _categoryDal.Add(category);
+
+            return new SuccessResult(Messages.CategoryAdded);
         }
 
-        public void Delete(Category category)
+        public IResult Delete(Category category)
         {
             _categoryDal.Delete(category);
+            return new SuccessResult(Messages.CategoryDeleted);
         }
 
-        public List<Category> GetAll()
+        public IDataResult<List<Category>> GetAll()
         {
-            return _categoryDal.GetAll();
+            if (DateTime.Now.Hour == 22)
+            {
+                return new ErrorDataResult<List<Category>>(Messages.MaintenanceTime);
+            }
+
+            return new SuccessDataResult<List<Category>>(_categoryDal.GetAll(), Messages.CategoriesListed);
         }
 
-        public void Update(Category category)
+        public IResult Update(Category category)
         {
             _categoryDal.Update(category);
+            return new SuccessResult(Messages.CategoryUpdated);
         }
 
-        public List<Category> GetAllByCategoryId(int id)
+        public IDataResult<List<Category>> GetAllByCategoryId(int id)
         {
-            return _categoryDal.GetAll(x => x.Id == id);
+            return new SuccessDataResult<List<Category>>(_categoryDal.GetAll(p => p.Id == id));
+
         }
 
+        public IDataResult<Category> GetById(int categoryId)
+        {
+            return new SuccessDataResult<Category>(_categoryDal.Get(p => p.Id == categoryId));
+        }
     }
 }
 

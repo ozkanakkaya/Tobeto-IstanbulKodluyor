@@ -1,13 +1,18 @@
-﻿using Entities.Concretes;
+﻿using Core.Utilities.Results;
+using Entities.Concretes;
+using Entities.DTOs;
 
 namespace Business.Abstracts
 {
     public interface ICourseService
     {
-        void Add(Course course);
-        void Delete(Course course);
-        void Update(Course course);
+        IResult Add(Course course);
+        IResult Delete(Course course);
+        IResult Update(Course course);
 
-        List<Course> GetAll();
+        IDataResult<List<Course>> GetAll();
+        IDataResult<List<Course>> GetByUnitPrice(decimal min, decimal max);
+        IDataResult<List<CourseDetailDto>> GetCourseDetails();
+        IDataResult<Course> GetById(int productId);
     }
 }

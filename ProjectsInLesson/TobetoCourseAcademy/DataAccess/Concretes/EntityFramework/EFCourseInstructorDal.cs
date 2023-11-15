@@ -1,4 +1,5 @@
-﻿using DataAccess.Abstracts;
+﻿using Core.DataAccess.EntityFramework;
+using DataAccess.Abstracts;
 using Entities.Concretes;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,60 +11,8 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concretes.EntityFramework
 {
-    public class EFCourseInstructorDal : ICourseInstructorDal
+    public class EFCourseInstructorDal : EFEntityRepositoryBase<CourseInstructor, TobetoCourseAcademyContext>, ICourseInstructorDal
     {
-        public void Add(CourseInstructor entity)
-        {
-            using (TobetoCourseAcademyContext context = new TobetoCourseAcademyContext())
-            {
-                var addedEntity = context.Entry(entity);
-                addedEntity.State = EntityState.Added;
-                context.SaveChanges();
-            }
-        }
 
-        public void Delete(CourseInstructor entity)
-        {
-            using (TobetoCourseAcademyContext context = new TobetoCourseAcademyContext())
-            {
-                var deletedEntity = context.Entry(entity);
-                deletedEntity.State = EntityState.Deleted;
-                context.SaveChanges();
-            }
-        }
-
-        public CourseInstructor Get(Expression<Func<CourseInstructor, bool>> filter)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<CourseInstructor> GetAll(Expression<Func<CourseInstructor, bool>> filter = null)
-        {
-            using (TobetoCourseAcademyContext context = new TobetoCourseAcademyContext())
-            {
-                return filter == null 
-                    ? context.Set<CourseInstructor>()
-                    .Include(x => x.Course)
-                    .ThenInclude(x=>x.Category)
-                    .Include(x => x.Instructor)
-                    .ToList() 
-                    : context.Set<CourseInstructor>()
-                    .Where(filter)
-                    .Include(x => x.Course)
-                    .ThenInclude(x => x.Category)
-                    .Include(x => x.Instructor)
-                    .ToList();
-            }
-        }
-
-        public void Update(CourseInstructor entity)
-        {
-            using (TobetoCourseAcademyContext context = new TobetoCourseAcademyContext())
-            {
-                var updatedEntity = context.Entry(entity);
-                updatedEntity.State = EntityState.Modified;
-                context.SaveChanges();
-            }
-        }
     }
 }

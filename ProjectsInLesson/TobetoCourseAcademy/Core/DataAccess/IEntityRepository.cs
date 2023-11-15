@@ -1,7 +1,7 @@
-﻿using Entities.Abstracts;
+﻿using Core.Entities;
 using System.Linq.Expressions;
 
-namespace DataAccess.Abstracts
+namespace Core.DataAccess
 {
     //buna generic constrains denir
     //class burada referans tip olduğunu ifade eder.

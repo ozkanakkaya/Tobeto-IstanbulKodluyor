@@ -1,23 +1,58 @@
 ﻿using Business.Concretes;
+using Core.Utilities.Results;
 using DataAccess.Concretes;
 using DataAccess.Concretes.EntityFramework;
 using Entities.Concretes;
 
 
-CourseManager courseManager = new CourseManager(new EfCourseDal());
 
-foreach (var course in courseManager.GetAll())
+
+GetAllCourseDetailsTest();
+
+//GetAllCourseTest();
+
+static void GetAllCourseDetailsTest()
 {
-    Console.WriteLine("Kurs Adı: " + course.Name);
-    Console.WriteLine("Kurs Açıklaması: " + course.Description);
-    Console.WriteLine("Eğitmenler :");
-    foreach (var instructor in course.GetCourseInstructors)
+    CourseManager courseManager1 = new CourseManager(new EfCourseDal());
+
+    var result1 = courseManager1.GetCourseDetails();
+    if (result1.Success==true)
     {
-        Console.WriteLine("   - " + instructor.Instructor.FirstName + " " + instructor.Instructor.LastName);
+        foreach (var course in result1.Data)
+        {
+            Console.WriteLine(course.CourseName);
+            Console.WriteLine(course.InstructorName);
+            Console.WriteLine(course.CategoryName);
+            Console.WriteLine(course.CourseDescription);
+            Console.WriteLine("-----------------");
+        }
     }
-    Console.WriteLine("Kategori: " + course.Category.Name);
-    Console.WriteLine("Fiyat: TL" + course.Price);
-    Console.WriteLine("-----------------");
+    else
+    {
+        Console.WriteLine(result1.Message);
+    }
+
+
+}
+
+
+static void GetAllCourseTest()
+{
+    CourseManager courseManager = new CourseManager(new EfCourseDal());
+
+    foreach (var course in courseManager.GetAll().Data)
+    {
+        Console.WriteLine("Kurs Adı: " + course.Name);
+        Console.WriteLine("Kurs Açıklaması: " + course.Description);
+        Console.WriteLine("Eğitmenler :");
+        foreach (var instructor in course.GetCourseInstructors)
+        {
+            Console.WriteLine("   - " + instructor.Instructor.FirstName + " " + instructor.Instructor.LastName);
+        }
+        Console.WriteLine("Kategori: " + course.Category.Name);
+        Console.WriteLine("Fiyat: TL" + course.Price);
+        Console.WriteLine("-----------------");
+    }
 }
 
 
