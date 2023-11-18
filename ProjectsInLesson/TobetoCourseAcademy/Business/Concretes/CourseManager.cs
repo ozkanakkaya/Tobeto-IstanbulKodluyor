@@ -1,4 +1,5 @@
-﻿using Business.Abstracts;
+﻿using AutoMapper;
+using Business.Abstracts;
 using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstracts;
@@ -11,9 +12,11 @@ namespace Business.Concretes
     public class CourseManager : ICourseService
     {
         ICourseDal _courseDal;
-        public CourseManager(ICourseDal courseDal)
+        IMapper _mapper;
+        public CourseManager(ICourseDal courseDal, IMapper mapper)
         {
             _courseDal = courseDal;
+            _mapper = mapper;
         }
 
         public IResult Add(Course course)
@@ -69,6 +72,27 @@ namespace Business.Concretes
         {
             _courseDal.Update(course);
             return new SuccessResult(Messages.CourseUpdated);
+        }
+
+        public IResult CourseAddWithInstructors(CourseAddDto courseAddDto)
+        {
+            var course = _mapper.Map<Course>(courseAddDto);
+
+            course.GetCourseInstructors = new List<CourseInstructor>();
+
+            foreach (var instructorId in courseAddDto.InstructorIds)
+            {
+                course.GetCourseInstructors.Add(new CourseInstructor
+                {
+                    Course = course,
+                    InstructorId = instructorId
+                });
+            }
+
+            _courseDal.Add(course);
+
+            return new SuccessResult(Messages.CourseAddedWithInstructors);
+
         }
     }
 }

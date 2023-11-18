@@ -9,6 +9,8 @@ namespace DataAccess.Concretes
 {
     public class EfInstructorDal : EFEntityRepositoryBase<Instructor, TobetoCourseAcademyContext>, IInstructorDal
     {
-
+        public EfInstructorDal(TobetoCourseAcademyContext context) : base(context)
+        {
+        }
     }
 }

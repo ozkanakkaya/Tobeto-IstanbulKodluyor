@@ -8,6 +8,8 @@ namespace DataAccess.Concretes.EntityFramework
 {
     public class EFCategoryDal : EFEntityRepositoryBase<Category, TobetoCourseAcademyContext>, ICategoryDal
     {
-     
+        public EFCategoryDal(TobetoCourseAcademyContext context) : base(context)
+        {
+        }
     }
 }

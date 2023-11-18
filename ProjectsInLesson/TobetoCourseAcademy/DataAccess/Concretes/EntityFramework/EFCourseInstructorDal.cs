@@ -13,6 +13,8 @@ namespace DataAccess.Concretes.EntityFramework
 {
     public class EFCourseInstructorDal : EFEntityRepositoryBase<CourseInstructor, TobetoCourseAcademyContext>, ICourseInstructorDal
     {
-
+        public EFCourseInstructorDal(TobetoCourseAcademyContext context) : base(context)
+        {
+        }
     }
 }

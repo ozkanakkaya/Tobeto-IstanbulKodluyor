@@ -5,9 +5,15 @@ namespace DataAccess.Concretes.EntityFramework
 {
     public class TobetoCourseAcademyContext : DbContext
     {
+        public TobetoCourseAcademyContext(DbContextOptions<TobetoCourseAcademyContext> options) : base(options)
+        {
+        }
+        public TobetoCourseAcademyContext()
+        {
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=TobetoCADb;Integrated Security=True");
+            //optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=TobetoCADb;Integrated Security=True");
         }
 
         public DbSet<Category> Categories { get; set; }

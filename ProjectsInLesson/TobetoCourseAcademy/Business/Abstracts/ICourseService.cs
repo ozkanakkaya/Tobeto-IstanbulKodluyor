@@ -10,6 +10,8 @@ namespace Business.Abstracts
         IResult Delete(Course course);
         IResult Update(Course course);
 
+        IResult CourseAddWithInstructors(CourseAddDto courseAddDto);
+
         IDataResult<List<Course>> GetAll();
         IDataResult<List<Course>> GetByUnitPrice(decimal min, decimal max);
         IDataResult<List<CourseDetailDto>> GetCourseDetails();
