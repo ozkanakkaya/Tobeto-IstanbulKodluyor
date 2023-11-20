@@ -1,4 +1,6 @@
 ﻿using Business.Abstracts;
+using Business.Constants;
+using Core.Utilities.Results;
 using DataAccess.Abstracts;
 using DataAccess.Concretes.EntityFramework;
 using Entities.Concretes;
@@ -19,29 +21,36 @@ namespace Business.Concretes
             _courseInstructorDal = courseInstructorDal;
         }
 
-        public void Add(CourseInstructor courseInstructor)
+        public IResult Add(CourseInstructor courseInstructor)
         {
             _courseInstructorDal.Add(courseInstructor);
+            return new SuccessResult(Messages.CourseInstructorAdded);
         }
 
-        public void Delete(CourseInstructor courseInstructor)
+        public IResult Delete(CourseInstructor courseInstructor)
         {
             _courseInstructorDal.Delete(courseInstructor);
+            return new SuccessResult(Messages.CourseInstructorDeleted);
         }
 
-        public List<CourseInstructor> GetAll()
+        public IDataResult<List<CourseInstructor>> GetAll()
         {
-            return _courseInstructorDal.GetAll();
+            return new SuccessDataResult<List<CourseInstructor>>(_courseInstructorDal.GetAll(), Messages.CourseInstructorsListed);
         }
 
-        public void Update(CourseInstructor courseInstructor)
+        public IResult Update(CourseInstructor courseInstructor)
         {
             _courseInstructorDal.Update(courseInstructor);
+            return new SuccessResult(Messages.CourseInstructorUpdated);
         }
 
-        public List<CourseInstructor> GetAllByCategoryId(int id)
+        public IDataResult<List<CourseInstructor>> GetAllByCategoryId(int id)
         {
-            return _courseInstructorDal.GetAll(x => x.Id == id);
+            return new SuccessDataResult<List<CourseInstructor>>(_courseInstructorDal.GetAll(x => x.Id == id), Messages.CourseInstructorListed);
+        }
+        public IDataResult<CourseInstructor> GetById(int courseInstructorId)
+        {
+            return new SuccessDataResult<CourseInstructor>(_courseInstructorDal.Get(p => p.Id == courseInstructorId));
         }
     }
 }

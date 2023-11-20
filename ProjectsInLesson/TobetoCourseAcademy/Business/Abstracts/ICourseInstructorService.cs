@@ -1,4 +1,5 @@
-﻿using Entities.Concretes;
+﻿using Core.Utilities.Results;
+using Entities.Concretes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,11 @@ namespace Business.Abstracts
 {
     public interface ICourseInstructorService
     {
-        void Add(CourseInstructor instructor);
-        void Delete(CourseInstructor instructor);
-        void Update(CourseInstructor instructor);
+        IResult Add(CourseInstructor courseInstructor);
+        IResult Delete(CourseInstructor courseInstructor);
+        IResult Update(CourseInstructor courseInstructor);
 
-        List<CourseInstructor> GetAll();
+        IDataResult<List<CourseInstructor>> GetAll();
+        IDataResult<CourseInstructor> GetById(int instructorId);
     }
 }
