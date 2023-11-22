@@ -1,5 +1,8 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using Business.Abstracts;
 using Business.Concretes;
+using Business.DependencyResolvers.Autofac;
 using Business.Mapping;
 using Core.DataAccess;
 using Core.DataAccess.EntityFramework;
@@ -19,23 +22,16 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 builder.Services.AddAutoMapper(typeof(Program));
-//builder.Services.AddAutoMapper(typeof(MappingProfile));
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
-builder.Services.AddScoped<ICourseService, CourseManager>();
-builder.Services.AddScoped<ICourseDal, EfCourseDal>();
-                 
-builder.Services.AddScoped<IInstructorService, InstructorManager>();
-builder.Services.AddScoped<IInstructorDal, EfInstructorDal>();
-                 
-builder.Services.AddScoped<ICategoryService, CategoryManager>();
-builder.Services.AddScoped<ICategoryDal, EFCategoryDal>();
-                 
-builder.Services.AddScoped<ICourseInstructorService, CourseInstructorManager>();
-builder.Services.AddScoped<ICourseInstructorDal, EFCourseInstructorDal>();
-
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory())
+                .ConfigureContainer<ContainerBuilder>(builder =>
+                {
+                    builder.RegisterModule(new AutofacBusinessModule());
+                });
 
 builder.Services.AddDbContext<TobetoCourseAcademyContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("SqlConnection"))); // Örneðin, burada ServiceLifetime belirleyebilirsiniz
+    options.UseSqlServer(builder.Configuration.GetConnectionString("SqlConnection")));
 
 
 
