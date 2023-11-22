@@ -35,3 +35,6 @@ namespace Core.Utilities.Interceptors
     }
 
 }
+//Bu sınıf, bir metot çağrısının çeşitli aşamalarında çalıştırılacak kodları tanımlar. Intercept metodu, bir metot çağrısı öncesi, sonrası, hata durumunda ve başarılı olduğunda çalıştırılır. Bu, Aspect Oriented Programming (AOP) prensiplerini uygulamak için kullanılır. AOP, çapraz kesitli endişeleri (loglama, güvenlik, önbellekleme, validasyon vb.) kod tabanından ayırmak için kullanılır.
+
+//OnBefore, OnAfter, OnException ve OnSuccess metotları, bir metot çağrısı öncesi, sonrası, hata durumunda ve başarılı olduğunda çalıştırılacak kodları tanımlar. Bu metotlar virtual olarak tanımlanmış, yani alt sınıflar tarafından ezilebilir (override).
