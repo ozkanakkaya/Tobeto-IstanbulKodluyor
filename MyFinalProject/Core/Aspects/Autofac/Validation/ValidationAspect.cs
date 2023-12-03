@@ -12,7 +12,7 @@ namespace Core.Aspects.Autofac.Validation
 {
     public class ValidationAspect : MethodInterception
     {
-        private Type _validatorType;
+        private Type _validatorType;//ProductValitador gelir tip olarak
         public ValidationAspect(Type validatorType)
         {
             if (!typeof(IValidator).IsAssignableFrom(validatorType))
@@ -23,14 +23,17 @@ namespace Core.Aspects.Autofac.Validation
             _validatorType = validatorType;
         }
         protected override void OnBefore(IInvocation invocation)
-        {
-            var validator = (IValidator)Activator.CreateInstance(_validatorType);
-            var entityType = _validatorType.BaseType.GetGenericArguments()[0];
-            var entities = invocation.Arguments.Where(t => t.GetType() == entityType);
+        {//13.Kamp Videosunda anlatılıyor.
+            var validator = (IValidator)Activator.CreateInstance(_validatorType);//ProductValitador'ın instance'ı alınır(newlenir).
+            var entityType = _validatorType.BaseType.GetGenericArguments()[0];//ProductValitador'ın generic argumanlarının sıfırıncısının tipini yakala(yani Product'ı yakalar-newlenmedi sadece tipi alır-).
+            var entities = invocation.Arguments.Where(t => t.GetType() == entityType);//Metodun(Add) argumanlarını(parametrelerini) gezer, entityType(Product'tır) ile aynı türe sahip olan öğeleri seçer. 
+
             foreach (var entity in entities)
             {
                 ValidationTool.Validate(validator, entity);
-            }
+            }//her bir öğe için ValidationTool.Validate(validator,
+            //entity) metodunu çağırır. Bu metod, belirtilen entity
+            //üzerinde belirtilen validator kullanarak doğrulama işlemini gerçekleştirir.
         }
     }
 }
