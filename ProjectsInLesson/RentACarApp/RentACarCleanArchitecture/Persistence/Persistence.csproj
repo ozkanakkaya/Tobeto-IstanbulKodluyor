@@ -19,7 +19,7 @@
 
   <ItemGroup>
     <Reference Include="Tobeto.Core.Persistence">
-      <HintPath>..\..\Tobeto.Core.Packages\Tobeto.Core.Persistence\bin\Debug\net7.0\Tobeto.Core.Persistence.dll</HintPath>
+      <HintPath>..\..\..\Tobeto.Core.Packages\Tobeto.Core.Persistence\bin\Debug\net7.0\Tobeto.Core.Persistence.dll</HintPath>
     </Reference>
   </ItemGroup>
 
