@@ -1,5 +1,4 @@
-﻿using Application.Mapping;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
 namespace Application
@@ -9,7 +8,7 @@ namespace Application
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             services.AddMediatR(configuration => { configuration.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()); });
-            services.AddAutoMapper(typeof(GeneralMapping));
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());//typeof(GeneralMapping)
             return services;
         }
     }

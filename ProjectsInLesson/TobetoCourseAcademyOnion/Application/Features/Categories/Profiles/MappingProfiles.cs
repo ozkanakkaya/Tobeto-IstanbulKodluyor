@@ -6,11 +6,11 @@ using Application.Features.Categories.Queries.GetList;
 using AutoMapper;
 using Domain.Entities;
 
-namespace Application.Mapping
+namespace Application.Features.Categories.Profiles
 {
-    public class GeneralMapping : Profile
+    public class MappingProfiles : Profile
     {
-        public GeneralMapping()
+        public MappingProfiles()
         {
             CreateMap<CreateCategoryCommand, Category>().ReverseMap();
             CreateMap<CreatedCategoryResponse, Category>().ReverseMap();

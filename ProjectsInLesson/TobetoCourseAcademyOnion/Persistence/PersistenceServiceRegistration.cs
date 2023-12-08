@@ -13,6 +13,10 @@ namespace Persistence
         {
             services.AddDbContext<BaseDbContext>(options => options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=TobetoCAOnionDb;Integrated Security=True"));
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IInstructorRepository, InstructorRepository>();
+            services.AddScoped<ICourseRepository, CourseRepository>();
+            services.AddScoped<ICourseInstructorRepository, CourseInstructorRepository>();
+
             return services;
         }
     }
