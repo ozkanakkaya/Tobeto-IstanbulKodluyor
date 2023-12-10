@@ -9,5 +9,6 @@ namespace Application.Features.Courses.Commands.Create
         public string Description { get; set; }
         public string ImageUrl { get; set; }
         public decimal Price { get; set; }
+        public IList<Guid>? InstructorIds { get; set; }
     }
 }

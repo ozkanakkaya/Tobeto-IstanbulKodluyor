@@ -1,4 +1,7 @@
-﻿namespace Application.Features.Courses.Queries.GetById
+﻿using Application.Features.Instructors.Dtos;
+using Domain.Entities;
+
+namespace Application.Features.Courses.Queries.GetById
 {
     public class GetByIdCourseResponse
     {
@@ -11,6 +14,7 @@
         public DateTime CreatedDate { get; set; }
         public DateTime? UpdatedDate { get; set; }
         public DateTime? DeletedDate { get; set; }
+        public IList<InstructorDto> Instructors { get; set; }
 
     }
 }

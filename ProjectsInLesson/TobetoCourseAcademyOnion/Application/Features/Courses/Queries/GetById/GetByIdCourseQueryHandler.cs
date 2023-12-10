@@ -1,6 +1,7 @@
 ﻿using Application.Services;
 using AutoMapper;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Courses.Queries.GetById
 {
@@ -17,7 +18,12 @@ namespace Application.Features.Courses.Queries.GetById
 
         public async Task<GetByIdCourseResponse> Handle(GetByIdCourseQuery request, CancellationToken cancellationToken)
         {
-            var course = await _courseRepository.GetAsync(x => x.Id == request.Id);
+            var course = await _courseRepository.GetAsync(
+                x => x.Id == request.Id, 
+                include: query => query
+                    .Include(entity => entity.GetCourseInstructors)
+                    .ThenInclude(entity => entity.Instructor));
+
             return _mapper.Map<GetByIdCourseResponse>(course);
         }
     }

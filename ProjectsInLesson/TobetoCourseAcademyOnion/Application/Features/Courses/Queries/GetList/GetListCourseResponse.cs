@@ -1,4 +1,6 @@
-﻿namespace Application.Features.Courses.Queries.GetList
+﻿using Application.Features.Instructors.Dtos;
+
+namespace Application.Features.Courses.Queries.GetList
 {
     public class GetListCourseResponse
     {
@@ -12,5 +14,6 @@
         public DateTime CreatedDate { get; set; }
         public DateTime? UpdatedDate { get; set; }
         public DateTime? DeletedDate { get; set; }
+        public IList<InstructorDto> Instructors { get; set; }
     }
 }

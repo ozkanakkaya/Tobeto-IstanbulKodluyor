@@ -1,4 +1,6 @@
-﻿namespace Application.Features.Courses.Commands.Create
+﻿using Domain.Entities;
+
+namespace Application.Features.Courses.Commands.Create
 {
     public class CreatedCourseResponse
     {

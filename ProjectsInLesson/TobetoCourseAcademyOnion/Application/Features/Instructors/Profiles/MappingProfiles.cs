@@ -1,6 +1,7 @@
 ﻿using Application.Features.Instructors.Commands.Create;
 using Application.Features.Instructors.Commands.Delete;
 using Application.Features.Instructors.Commands.Update;
+using Application.Features.Instructors.Dtos;
 using Application.Features.Instructors.Queries.GetById;
 using Application.Features.Instructors.Queries.GetList;
 using AutoMapper;
@@ -24,6 +25,10 @@ namespace Application.Features.Instructors.Profiles
             CreateMap<GetByIdInstructorResponse, Instructor>().ReverseMap();
 
             CreateMap<GetListInstructorResponse, Instructor>().ReverseMap();
+
+
+            CreateMap<InstructorDto, Instructor>().ReverseMap();
+
         }
     }
 }

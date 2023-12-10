@@ -21,9 +21,19 @@ namespace Application.Features.Courses.Profiles
             CreateMap<Course, UpdatedCourseResponse>().ReverseMap();
             CreateMap<Course, UpdateCourseCommand>().ReverseMap();
 
-            CreateMap<GetByIdCourseResponse, Course>().ReverseMap();
+            CreateMap<Course, GetByIdCourseResponse>()
+                .ForPath(dest => dest.Instructors, opt => opt.
+                    MapFrom(src => src.GetCourseInstructors.
+                        Select(x=>x.Instructor)))
+                .ReverseMap();
 
-            CreateMap<GetListCourseResponse, Course>().ReverseMap().ForPath(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.Name));
+            CreateMap<Course, GetListCourseResponse>()
+                .ForPath(dest => dest.CategoryName, opt => opt
+                    .MapFrom(src => src.Category.Name))
+                .ForPath(dest => dest.Instructors, opt => opt.
+                    MapFrom(src => src.GetCourseInstructors.
+                        Select(x => x.Instructor)))
+                .ReverseMap();
         }
     }
 }

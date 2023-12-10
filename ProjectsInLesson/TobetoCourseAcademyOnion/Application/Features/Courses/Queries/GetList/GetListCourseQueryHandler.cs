@@ -18,7 +18,11 @@ namespace Application.Features.Courses.Queries.GetList
 
         public async Task<List<GetListCourseResponse>> Handle(GetListCourseQuery request, CancellationToken cancellationToken)
         {
-            var courses = await _courseRepository.GetListAsync(include: query => query.Include(entity => entity.Category));
+            var courses = await _courseRepository.GetListAsync(
+                include: query => query
+                    .Include(entity => entity.Category)
+                    .Include(entity => entity.GetCourseInstructors)
+                    .ThenInclude(entity => entity.Instructor));
 
             return _mapper.Map<List<GetListCourseResponse>>(courses.Items);
         }
