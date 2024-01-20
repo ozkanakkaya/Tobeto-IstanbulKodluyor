@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Icon, Menu, Table } from "semantic-ui-react";
+import { Button, Icon, Menu, Table } from "semantic-ui-react";
 import ProductService from "../services/productService";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../store/actions/cartActions";
+import { toast } from "react-toastify";
 
 export default function ProductList() {
+  const dispatch = useDispatch();
+
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -12,6 +17,11 @@ export default function ProductList() {
       .getProducts()
       .then((result) => setProducts(result.data.products));
   }, []);
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+    toast.success(`${product.title} sepete eklendi!`)
+  };
 
   return (
     <div>
@@ -39,6 +49,9 @@ export default function ProductList() {
               <Table.Cell>{product.discountPercentage}</Table.Cell>
               <Table.Cell>{product.stock}</Table.Cell>
               <Table.Cell>{product.category}</Table.Cell>
+              <Table.Cell>
+                <Button onClick={()=>handleAddToCart(product)}>Sepete Ekle</Button>
+              </Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>
