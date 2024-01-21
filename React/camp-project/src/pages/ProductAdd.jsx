@@ -18,19 +18,8 @@ export default function ProductAdd() {
     onSubmit={(values)=>{ console.log(values)}
     }>
       <Form className="ui form">
-        
-        <FormField>
-          <Field name="title" placeholder="Ürün Adı"></Field>
-          <ErrorMessage name="title" render={ error=>
-            <Label pointing basic color="red" content={error}></Label>
-          }></ErrorMessage>
-        </FormField>
-        <FormField>
-          <Field name="price" placeholder="Ürün Fiyatı"></Field>
-          <ErrorMessage name="price" render={ error=>
-            <Label pointing basic color="red" content={error}></Label>
-          }></ErrorMessage>
-        </FormField>
+        <KodlamaIoTextInput name="title" placeholder="Ürün Adı"/>
+        <KodlamaIoTextInput name="price" placeholder="Ürün Fiyatı"/>
         <Button color="green" type="submit">Ekle</Button>
       </Form>
     </Formik>
